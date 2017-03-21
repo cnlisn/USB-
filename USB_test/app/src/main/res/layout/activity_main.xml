@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/tvtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="title" />
+
+    <EditText
+        android:id="@+id/etxsend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvtitle"
+        android:layout_below="@+id/tvtitle"
+        android:ems="10"
+        android:hint="sendhint"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/etxreceive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btsend"
+        android:layout_below="@+id/btsend"
+        android:layout_marginTop="37dp"
+        android:ems="10"
+        android:hint="receivehint"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btreceive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etxreceive"
+        android:layout_below="@+id/etxreceive"
+        android:text="接收" />
+
+    <Button
+        android:id="@+id/btsend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etxsend"
+        android:layout_below="@+id/etxsend"
+        android:layout_marginTop="16dp"
+        android:text="发送" />
+
+    <ListView
+        android:id="@+id/lsv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btreceive"
+        android:layout_below="@+id/btreceive" >
+    </ListView>
+
+</RelativeLayout>

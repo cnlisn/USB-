@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lisn.usb_test">
+
+    <!-- 这个权限是必须有的，否则操作不了硬件,google的文档没有说出来，据说是因为有过滤器后自动获得，但是我的项目没这句话不成功。 -->
+    <uses-permission android:name="android.permission.HARDWARE_TEST" />
+    <!-- 这句话也是必须的 -->
+    <uses-feature android:name="android.hardware.usb.host" android:required="true"/>
+    <!-- SDK必须是12以上的，因为从 Android3.1开始，才正式支持USB Host -->
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- 以下这个过滤器是要手工增加上，如果不增加也可以在代码中动态注册，不过我的代码是在这里注册 -->
+            <intent-filter>
+                <action
+                    android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <!-- 以下这个meta-data是要手工增加上，他是用来过滤你的具体USB设备的，其中的device_filter是个xml文件 -->
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter"/>
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <data android:mimeType=""></data>
+            </intent-filter>
+            -->
+
+        </activity>
+    </application>
+
+<!--    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+
+        </activity>
+
+ &lt;!&ndash;       <activity android:name=".UsbTestActivity">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            &lt;!&ndash; 以下这个meta-data是要手工增加上，他是用来过滤你的具体USB设备的，其中的device_filter是个xml文件 &ndash;&gt;
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>&ndash;&gt;
+
+  &lt;!&ndash;      <activity
+            android:name=".DeviceListActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity
+            android:name=".SerialConsoleActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+        </activity>&ndash;&gt;
+
+    </application>-->
+
+</manifest>
